@@ -1,20 +1,20 @@
-# was automatically crewated when you select Docker Support in project creation
-
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base
 WORKDIR /app
+EXPOSE 80
+EXPOSE 443
 
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
-RUN dotnet restore
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+WORKDIR /src
+COPY ["WebAPI/WebAPI.csproj", "WebAPI/"]
+RUN dotnet restore "WebAPI/WebAPI.csproj"
+COPY . .
+WORKDIR "/src/WebAPI"
+RUN dotnet build "WebAPI.csproj" -c Release -o /app/build
 
-# Copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
+FROM build AS publish
+RUN dotnet publish "WebAPI.csproj" -c Release -o /app/publish
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+FROM base AS final
 WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "CarManagementGUI.dll"]
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "WebAPI.dll"]

@@ -1,17 +1,16 @@
 version: '3.4'
-
 services:
-  carbooking.api:
-    image: ${DOCKER_REGISTRY-}webgapi
-    build:
-      context: .
-      dockerfile: WebAPI/Dockerfile
-    environment:
-        ConnectionStrings__DefaultConnection: "Server=tcp:localhost;Database=CarBookings;User Id=sa;Password=password1234!!!!;"
-    ports:
-      - "5000:80"
-    depends_on:
-      - db
+  webapi:
+      image: ${DOCKER_REGISTRY-} webapi
+      build:
+        context: .
+        dockerfile: WebAPI/Dockerfile
+      environment:
+          ConnectionStrings__DefaultConnection: "Server=tcp:localhost;Database=CarBookings;User Id=sa;Password=password1234!!!!;"
+      ports:
+        - "5000:80"
+      depends_on:
+        - db
 
   db: 
     image: "mcr.microsoft.com/mssql/server"

@@ -30,6 +30,7 @@ namespace WebAPI
 			
 		}
 
+
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
@@ -39,6 +40,12 @@ namespace WebAPI
 			}
 
 			app.UseHttpsRedirection();
+
+			using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+			{
+				// FIXME: Database connection can sometimes not be established.
+				scope.ServiceProvider.GetService<CarDbContext>().Database.Migrate();
+			}
 
 			app.UseRouting();
 

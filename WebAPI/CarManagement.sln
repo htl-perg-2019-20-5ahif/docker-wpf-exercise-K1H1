@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{8CCF6BEE-4E26-4EED-AEA7-43AEB603BBDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarManagementGUI", "CarManagementGUI\CarManagementGUI.csproj", "{15357863-24C7-401F-A08E-C8E20353FAFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarManagementGUI", "CarManagementGUI\CarManagementGUI.csproj", "{15357863-24C7-401F-A08E-C8E20353FAFA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C10B6A26-7F57-4219-B4B7-79A3272C4206}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{15357863-24C7-401F-A08E-C8E20353FAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15357863-24C7-401F-A08E-C8E20353FAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15357863-24C7-401F-A08E-C8E20353FAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C10B6A26-7F57-4219-B4B7-79A3272C4206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C10B6A26-7F57-4219-B4B7-79A3272C4206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C10B6A26-7F57-4219-B4B7-79A3272C4206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C10B6A26-7F57-4219-B4B7-79A3272C4206}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
